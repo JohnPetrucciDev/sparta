@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SPARTA - Node</title>
+    <meta name="description" content="SPARTA - Node">
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/vue-2.5.16.min.js"></script>
+    <script src="js/vuex-3.0.1.js"></script>
+</head>
+
+<body>
+<div id="container">
+
+    <header>
+        <div class="columns is-multiline">
+            <div class="column">
+                <a href="/">
+                    <div class="logo"></div>
+                </a>
+            </div>
+            <div class="column is-narrow">
+                <ul id="header-menu">
+                    <li>
+                        <a target="_blank" href="https://sparta.top">Website</a>
+                    </li>
+                    <li class="active">
+                        <a href="https://sparta.top">Node</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://wallet.sparta.top">Wallet</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://blockchain.sparta.top">Blockchain</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://stats.sparta.top">Stats</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div id="app"></div>
+
+    <footer>
+        <div class="columns is-multiline is-flex-mobile">
+            <div class="column is-12-mobile">
+                <div class="copyright">2017-2018 SPARTA.TOP — Simple. Fast. Reliable.</div>
+            </div>
+            <!--div class="column is-narrow is-narrow-mobile social-block">
+                <a href="#" class="fb"></a>
+                <a href="#" class="tw"></a>
+                <a href="#" class="tg"></a>
+                <a href="#" class="rd"></a>
+                <a href="#" class="bt"></a>
+                <a href="#" class="md"></a>
+                <a href="#" class="im"></a>
+            </div-->
+            <div class="column is-narrow">
+                <a class="bold is-pulled-right" target="_blank" href="https://sparta.top/faq.html">FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            $('textarea').on('change paste keyup', function () {
+                if ($(this).val().length < 5) {
+                    $(this).addClass('incorrect');
+                } else {
+                    $(this).removeClass('incorrect');
+                }
+            });
+        });
+    </script>
+    <script src="js/app.js"></script>
+</div>
+</body>
+</html>
