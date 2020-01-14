@@ -160,13 +160,6 @@ abstract class CreateTransaction extends APIServlet.APIRequestHandler {
                 builder.ecBlockHeight(ecBlockHeight);
             }
             Transaction transaction = builder.build(secretPhrase);
-            try {
-                if (Math.addExact(amountAPL, transaction.getFeeAPL()) > senderAccount.getUnconfirmedBalanceAPL()) {
-                    return NOT_ENOUGH_FUNDS;
-                }
-            } catch (ArithmeticException e) {
-                return NOT_ENOUGH_FUNDS;
-            }
             JSONObject transactionJSON = JSONData.unconfirmedTransaction(transaction);
             response.put("transactionJSON", transactionJSON);
             try {
@@ -188,7 +181,8 @@ abstract class CreateTransaction extends APIServlet.APIRequestHandler {
         } catch (SpaException.NotYetEnabledException e) {
             return FEATURE_NOT_AVAILABLE;
         } catch (SpaException.InsufficientBalanceException e) {
-            throw e;
+            response.put("broadcasted", false);
+            return response;
         } catch (SpaException.ValidationException e) {
             if (broadcast) {
                 response.clear();
@@ -197,7 +191,6 @@ abstract class CreateTransaction extends APIServlet.APIRequestHandler {
             JSONData.putException(response, e);
         }
         return response;
-
     }
 
     @Override
